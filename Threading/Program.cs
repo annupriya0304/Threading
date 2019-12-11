@@ -1,17 +1,40 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
-namespace Threading
+public class ExThread
 {
-    class Program
+
+    // Static method for thread a 
+    public static void thread1()
     {
-        static void Main(string[] args)
+        for (int z = 0; z < 5; z++)
         {
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            Console.WriteLine(z);
         }
+    }
+
+    // static method for thread b 
+    public static void thread2()
+    {
+        for (int z = 0; z < 5; z++)
+        {
+            Console.WriteLine("thread 2"+z);
+        }
+    }
+}
+
+// Driver Class 
+public class GFG
+{
+
+    // Main method 
+    public static void Main()
+    {
+        // Creating and initializing threads 
+        Thread a = new Thread(ExThread.thread1);
+        Thread b = new Thread(ExThread.thread2);
+        a.Start();
+        b.Start();
+        Console.ReadKey();
     }
 }
